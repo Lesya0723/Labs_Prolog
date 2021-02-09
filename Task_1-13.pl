@@ -57,3 +57,6 @@ allChildren(Y):-parent(Y,X),write(X),nl,fail.
 
 mother(X,Y):-parent(X,Y),woman(X).
 mother(X):-mother(Y,X),write(Y).
+
+son(X,Y):-parent(Y,X),man(X),!.
+son(X):-son(Y,X),write(Y),nl,fail.
