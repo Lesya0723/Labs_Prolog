@@ -51,3 +51,7 @@ parent(zhdana,zlatomir).
 
 allMan(X):-man(X),write(X),nl,fail.
 allWoman(X):-woman(X),write(X),nl,fail.
+
+children(X,Y):-parent(Y,X).
+allChildren(Y):-parent(Y,X),write(X),nl,fail.
+
