@@ -7,17 +7,9 @@ man(svyatoslav).
 man(dobrozhir).
 man(bogomil).
 man(zlatomir).
-man(pasha).
-man(kondrat).
-man(timofei).
-man(samuil).
+man(semen).
 man(dmitry).
 man(oleg).
-man(nikita).
-man(sava).
-man(igor).
-man(ivan).
-
 
 woman(goluba).
 woman(lubomila).
@@ -28,35 +20,21 @@ woman(bozhedara).
 woman(broneslava).
 woman(veselina).
 woman(zdislava).
-woman(elena).
-woman(maria).
-woman(sveta).
 woman(inna).
-woman(anna).
 woman(kate).
-woman(natalia).
 woman(anastasia).
-woman(angela).
-woman(kristina).
-woman(daria).
-woman(slava).
-woman(luda).
-woman(lidia).
 
 
 parent(voeneg,ratibor).
 parent(voeneg,bratislava).
 parent(voeneg,velerad).
 parent(voeneg,zhdana).
-parent(kondrat,voeneg).
-parent(maria,voeneg).
 
 
 parent(goluba,ratibor).
 parent(goluba,bratislava).
 parent(goluba,velerad).
-parent(timofei,goluba).
-parent(sveta,goluba).
+parent(goluba,zhdana).
 
 
 parent(ratibor,svyatoslav).
@@ -65,8 +43,6 @@ parent(lubomila,svyatoslav).
 parent(lubomila,dobrozhir).
 parent(semen,lubomila).
 parent(inna,lubomila).
-parent(anna,ratibor).
-
 
 parent(boguslav,bogomil).
 parent(boguslav,bozhedara).
@@ -74,30 +50,23 @@ parent(bratislava,bogomil).
 parent(bratislava,bozhedara).
 parent(dmitry,boguslav).
 parent(kate,boguslav).
-parent(natalia,bratislava).
+
 
 
 parent(velerad,broneslava).
 parent(velerad,veselina).
 parent(veslava,broneslava).
 parent(veslava,veselina).
-parent(oleg,velerad).
-parent(anastasia,velerad).
-parent(pasha,veslava).
-parent(angela,veslava).
+parent(oleg,veslava).
+parent(anastasia,veslava).
 
 
 parent(duhovlad,zdislava).
 parent(duhovlad,zlatomir).
 parent(zhdana,zdislava).
 parent(zhdana,zlatomir).
-parent(nikita,duhovlad).
-parent(kristina,duhovlad).
-parent(elena,zhdana).
-parent(elena,ivan).
-parent(elena,igor).
-parent(elena,luda).
-parent(elena,lidia).
+parent(oleg,duhovlad).
+parent(anastasia,duhovlad).
 
 men(X):-man(X),write(X),nl,fail.
 women(X):-woman(X),write(X),nl,fail.
