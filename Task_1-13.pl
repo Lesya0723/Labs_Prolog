@@ -120,3 +120,5 @@ grand_pas(X):-grand_pa(Y,X),write(Y),nl,fail.
 daughter(X,Y):-parent(Y,X),woman(X),!.
 grand_so(X,Y):-son(X,Z),(son(Z,Y);daughter(Z,Y)),man(X),!.
 grand_sons(X):-parent(X,Z),parent(Z,Y),man(Y),write(Y),nl,fail.
+
+grand_pa_and_son(X,Y):-(grand_pa(X,Y),!,man(X));grand_so(X,Y),man(Y).
