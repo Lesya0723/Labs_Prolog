@@ -15,6 +15,8 @@ man(dmitry).
 man(oleg).
 man(nikita).
 man(sava).
+man(igor).
+man(ivan).
 
 
 woman(goluba).
@@ -38,6 +40,8 @@ woman(angela).
 woman(kristina).
 woman(daria).
 woman(slava).
+woman(luda).
+woman(lidia).
 
 
 parent(voeneg,ratibor).
@@ -51,7 +55,6 @@ parent(maria,voeneg).
 parent(goluba,ratibor).
 parent(goluba,bratislava).
 parent(goluba,velerad).
-parent(goluba,zhdana).
 parent(timofei,goluba).
 parent(sveta,goluba).
 
@@ -96,8 +99,8 @@ parent(elena,igor).
 parent(elena,luda).
 parent(elena,lidia).
 
-allMan(X):-man(X),write(X),nl,fail.
-allWoman(X):-woman(X),write(X),nl,fail.
+men(X):-man(X),write(X),nl,fail.
+women(X):-woman(X),write(X),nl,fail.
 
 children(X,Y):-parent(Y,X).
 allChildren(Y):-parent(Y,X),write(X),nl,fail.
@@ -131,3 +134,7 @@ grand_pa_and_da(X,Y):-(grand_pa(X,Y),woman(Y),!);grand_da(X,Y),man(Y).
 
 uncle(X,Y):-brother(X,Z),mother(Z,Y);brother(X,Z),father(Z,Y).
 uncle(X):-uncle(Y,X),write(Y),nl,fail.
+
+aunt(X,Y):-sister(X,Z),mother(Z,Y);sister(X,Z),father(Z,Y).
+aunt(X):-aunt(Y,X),write(Y),nl,fail.
+
