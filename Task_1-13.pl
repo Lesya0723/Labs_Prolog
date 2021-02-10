@@ -91,7 +91,10 @@ parent(zhdana,zlatomir).
 parent(nikita,duhovlad).
 parent(kristina,duhovlad).
 parent(elena,zhdana).
-
+parent(elena,ivan).
+parent(elena,igor).
+parent(elena,luda).
+parent(elena,lidia).
 
 allMan(X):-man(X),write(X),nl,fail.
 allWoman(X):-woman(X),write(X),nl,fail.
@@ -126,3 +129,5 @@ grand_pa_and_son(X,Y):-(grand_pa(X,Y),!,man(X));grand_so(X,Y),man(Y).
 grand_da(X,Y):-daughter(X,Z),(son(Z,Y);daughter(Z,Y)),woman(X),!.
 grand_pa_and_da(X,Y):-(grand_pa(X,Y),woman(Y),!);grand_da(X,Y),man(Y).
 
+uncle(X,Y):-brother(X,Z),mother(Z,Y);brother(X,Z),father(Z,Y).
+uncle(X):-uncle(Y,X),write(Y),nl,fail.
