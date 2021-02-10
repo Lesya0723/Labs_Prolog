@@ -122,3 +122,7 @@ grand_so(X,Y):-son(X,Z),(son(Z,Y);daughter(Z,Y)),man(X),!.
 grand_sons(X):-parent(X,Z),parent(Z,Y),man(Y),write(Y),nl,fail.
 
 grand_pa_and_son(X,Y):-(grand_pa(X,Y),!,man(X));grand_so(X,Y),man(Y).
+
+grand_da(X,Y):-daughter(X,Z),(son(Z,Y);daughter(Z,Y)),woman(X),!.
+grand_pa_and_da(X,Y):-(grand_pa(X,Y),woman(Y),!);grand_da(X,Y),man(Y).
+
