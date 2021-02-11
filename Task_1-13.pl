@@ -86,7 +86,7 @@ brothers(X):-brother(Y,X),man(Y),write(Y),nl,fail.
 sister(X,Y):-parent(Z,X),parent(Z,Y),woman(X),!.
 sisters(X):-parent(Z,X),parent(Z,Y),woman(Y),woman(Z),not(Y=X),write(Y),nl,fail.
 
-b_s(X,Y):-parent(Z,X),parent(Z,Y),not(X=Y).
+b_s(X,Y):-parent(Z,X),parent(Z,Y),woman(Z),not(X=Y).
 b_s(X):-b_s(Y,X),write(Y),nl,fail.
 
 grand_pa(X,Y):-parent(X,Z),parent(Z,Y),man(X).
@@ -96,11 +96,12 @@ daughter(X,Y):-parent(Y,X),woman(X),!.
 grand_so(X,Y):-son(X,Z),(son(Z,Y);daughter(Z,Y)),man(X),!.
 grand_sons(X):-parent(X,Z),parent(Z,Y),man(Y),write(Y),nl,fail.
 
-grand_pa_and_son(X,Y):-(grand_pa(X,Y),!,man(X));grand_so(X,Y),man(Y).
+grand_pa_and_son(X,Y):-(grand_pa(X,Y),!,man(X),man(Y));grand_so(X,Y),man(X),man(Y).
 
 grand_da(X,Y):-daughter(X,Z),(son(Z,Y);daughter(Z,Y)),woman(X),!.
 grand_pa_and_da(X,Y):-(grand_pa(X,Y),woman(Y),!);grand_da(X,Y),man(Y).
 
+father(X,Y):-children(Y,X),man(X).
 uncle(X,Y):-brother(X,Z),mother(Z,Y);brother(X,Z),father(Z,Y).
 uncle(X):-uncle(Y,X),write(Y),nl,fail.
 
