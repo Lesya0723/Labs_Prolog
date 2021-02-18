@@ -1,72 +1,73 @@
-man(voeneg).
-man(ratibor).
-man(boguslav).
-man(velerad).
-man(duhovlad).
-man(svyatoslav).
-man(dobrozhir).
-man(bogomil).
-man(zlatomir).
+man(danil).
+man(evgen).
+man(ivan).
+man(maksim).
+man(anton).
+man(alex).
+man(roman).
+man(vlad).
+man(timofei).
 man(semen).
 man(dmitry).
 man(oleg).
 
-woman(goluba).
-woman(lubomila).
-woman(bratislava).
-woman(veslava).
-woman(zhdana).
-woman(bozhedara).
-woman(broneslava).
-woman(veselina).
-woman(zdislava).
+woman(daria).
+woman(luba).
+woman(lilia).
+woman(ksu).
+woman(albina).
+woman(julia).
+woman(valentina).
+woman(maria).
+woman(anna).
 woman(inna).
 woman(kate).
 woman(anastasia).
 
 
-parent(voeneg,ratibor).
-parent(voeneg,bratislava).
-parent(voeneg,velerad).
-parent(voeneg,zhdana).
+parent(danil,evgen).
+parent(danil,lilia).
+parent(danil,maksim).
+parent(danil,albina).
 
 
-parent(goluba,ratibor).
-parent(goluba,bratislava).
-parent(goluba,velerad).
-parent(goluba,zhdana).
+parent(daria,evgen).
+parent(daria,lilia).
+parent(daria,maksim).
+parent(daria,albina).
 
 
-parent(ratibor,svyatoslav).
-parent(ratibor,dobrozhir).
-parent(lubomila,svyatoslav).
-parent(lubomila,dobrozhir).
-parent(semen,lubomila).
-parent(inna,lubomila).
+parent(evgen,alex).
+parent(evgen,roman).
+parent(luba,alex).
+parent(luba,roman).
+parent(semen,luba).
+parent(inna,luba).
 
-parent(boguslav,bogomil).
-parent(boguslav,bozhedara).
-parent(bratislava,bogomil).
-parent(bratislava,bozhedara).
-parent(dmitry,boguslav).
-parent(kate,boguslav).
-
-
-
-parent(velerad,broneslava).
-parent(velerad,veselina).
-parent(veslava,broneslava).
-parent(veslava,veselina).
-parent(oleg,veslava).
-parent(anastasia,veslava).
+parent(ivan,vlad).
+parent(ivan,julia).
+parent(lilia,vlad).
+parent(lilia,julia).
+parent(dmitry,ivan).
+parent(kate,ivan).
 
 
-parent(duhovlad,zdislava).
-parent(duhovlad,zlatomir).
-parent(zhdana,zdislava).
-parent(zhdana,zlatomir).
-parent(oleg,duhovlad).
-parent(anastasia,duhovlad).
+
+parent(maksim,valentina).
+parent(maksim,maria).
+parent(ksu,valentina).
+parent(ksu,maria).
+parent(oleg,ksu).
+parent(anastasia,ksu).
+
+
+parent(anton,anna).
+parent(anton,timofei).
+parent(albina,anna).
+parent(albina,timofei).
+parent(oleg,anton).
+parent(anastasia,anton).
+
 
 men(X):-man(X),write(X),nl,fail.
 women(X):-woman(X),write(X),nl,fail.
