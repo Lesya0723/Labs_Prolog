@@ -16,3 +16,6 @@ factorial(N,X):-fact(N,1,X).
 fibUp(1,1):-!.                                                     
 fibUp(2,1):-!.
 fibUp(N,X):-N1 is N-1, fibUp(N1,X1), N2 is N-2, fibUp(N2,X2), X is X1+X2.
+
+sumUp(N,N):-N<10,!.     
+sumUp(N,Sum):-N1 is N mod 10, N2 is N div 10, sumUp(N2,Sum1),Sum is Sum1+N1.
