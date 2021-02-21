@@ -102,10 +102,10 @@ grand_pa_and_son(X,Y):-(grand_pa(X,Y),!,man(X),man(Y));grand_so(X,Y),man(X),man(
 grand_da(X,Y):-daughter(X,Z),(son(Z,Y);daughter(Z,Y)),woman(X),!.
 grand_pa_and_da(X,Y):-(grand_pa(X,Y),woman(Y),!);grand_da(X,Y),man(Y).
 
-father(X,Y):-children(Y,X),man(X).
-uncle(X,Y):-brother(X,Z),mother(Z,Y);brother(X,Z),father(Z,Y).
+
+uncle(X,Y):-parent(Z,Y),brother(X,Z).
 uncle(X):-uncle(Y,X),write(Y),nl,fail.
 
-aunt(X,Y):-sister(X,Z),mother(Z,Y);sister(X,Z),father(Z,Y).
+aunt(X,Y):-parent(Z,Y),sister(X,Z).
 aunt(X):-aunt(Y,X),write(Y),nl,fail.
 
