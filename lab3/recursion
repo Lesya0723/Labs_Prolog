@@ -30,3 +30,11 @@ maxUp(X,N):- X1 is X div 10, X2 is X mod 10, maxUp(X1,N1), ( X2<N1 ->  N =  N1;N
 maxDown(0, Max, Max) :- !.
 maxDown(N, CurM, Max):-N1 is N mod 10, N2 is N div 10,(N1 < CurM -> CurM1 is CurM; CurM1 is N1),maxDown(N2, CurM1, Max).
 maxDown(N, Max):- maxDown(N, 0, Max).
+
+delna3(X,Y):- X mod 10 mod 3 =:= 0 , Y is X mod 10,!.
+delna3(_,Y):-Y is 0,!.
+sum_1(0,Sum,Sum):-!.
+sum_1(N,X,Sum):- N1 is N div 10,delna3(N,Y),Sum1 is X+Y, sum_1(N1,Sum1,Sum).
+sum_1(N,Sum):-sum_1(N,0,Sum).
+
+
