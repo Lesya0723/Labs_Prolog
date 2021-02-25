@@ -4,3 +4,7 @@ rList(N, CurN, CurL, L) :- CurN1 is CurN + 1, read(X), append(CurL, [X], CurL1),
 
 writeList([]):-!.
 writeList([H|T]):-write(H),nl,writeList(T).
+
+sum_list_down(List,Sum):- sList(List,0,Sum).
+sList([],Sum,Sum):-!.
+sList([H|L], CurSum, Sum):- CurSum1 is CurSum+H,sList(L,CurSum1,Sum).
