@@ -19,6 +19,11 @@ min_list_down(List,MinElem):- min_list_down(List,10000,MinElem).
 min_list_down([],MinElem,MinElem):-write("Минимальный элемент"),!.
 min_list_down([Head|L],CurM,MinElem):-(Head<CurM -> Min1 is Head;Min1 is CurM),min_list_down(L,Min1,MinElem).
 
+readMinElem:-write("Количество элементов: "),
+   read(N),nl,write("Введите элементы списка "),
+   rList(N,L),min_list_down(L,MinElem),
+   write(MinElem),!.
+
 member_List(X,[X|_]):-!.
 member_List(X,[_|T]):-member_List(X,T).
 
