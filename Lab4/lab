@@ -12,6 +12,9 @@ sList([H|L], CurSum, Sum):- CurSum1 is CurSum+H,sList(L,CurSum1,Sum).
 sum_list_up([],0):-!.
 sum_list_up([H|L],Sum):-sum_list_up(L,Sum1),Sum is Sum1+H.
 
+min_listUp([MinElem], MinElem):-!.
+min_listUp([Head|L], MinElem):- min_list(L, TailMinElem),( TailMinElem < Head -> MinElem = TailMinElem; MinElem = Head).
+
 member_List(X,[X|_]):-!.
 member_List(X,[_|T]):-member_List(X,T).
 
