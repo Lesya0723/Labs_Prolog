@@ -30,3 +30,6 @@ member_List(X,[_|T]):-member_List(X,T).
 reverse(L,X):-rev(L,[],X).
 rev([],X,X):-!.
 rev([H|T],CurL,X):-rev(T,H|CurL,X).
+
+match([], _) :- !.
+match([SubHead|SubTail], [Head|Tail]) :- (SubHead = Head -> p(SubTail, Tail); match([SubHead|SubTail], Tail)).
