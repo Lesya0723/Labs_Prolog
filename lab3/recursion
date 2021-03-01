@@ -59,3 +59,13 @@ prime(N, D) :-  N > D, N mod D =\= 0, D1 is D + 1,prime(N, D1).
 kolDel(_,0,0):-!.
 kolDel(N,L,X):-N mod L =:= 0,L1 is L-1, kolDel(N,L1,X1), X is X1+1; N mod L=\= 0, L1 is L -1, kolDel(N,L1,X1), X is X1.
 kolDel(N,X):-kolDel(N,N,X).
+
+
+fun(X, X, X).
+fun(X, Y, D):- X < Y, Z is Y - X,fun(X, Z, D).
+fun(X, Y, D):- Y < X,Z is X - Y, fun(Z, Y, D).
+func(X, Y):- fun(X, Y, 1), !.
+
+phi(X, N):- phi_(1, 0, X, N).
+phi_(X, I, X, I).
+phi_(CX, I, X, N):- func(CX, X), J is I + 1, Y is CX + 1, phi_(Y, J, X, N);Y is CX + 1,phi_(Y, I, X, N).
