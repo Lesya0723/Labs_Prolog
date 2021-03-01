@@ -45,3 +45,17 @@ sum_1(N,X,Sum):- N1 is N div 10,delna3(N,Y),Sum1 is X+Y, sum_1(N1,Sum1,Sum).
 sum_1(N,Sum):-sum_1(N,0,Sum).
 
 
+nod(A,A,A):-!. 
+nod(A,B,Nod):-A>=B,C is A mod B, nod(C,B,Nod).
+nod(A,B,Nod):-A<B,C is B mod A, nod(A,C,Nod).
+
+
+is_prime(1):-!.
+is_prime(N) :-N > 1,prime(N, 2).
+prime(N, D) :-  N =< D.
+prime(N, D) :-  N > D, N mod D =\= 0, D1 is D + 1,prime(N, D1).
+
+
+kolDel(_,0,0):-!.
+kolDel(N,L,X):-N mod L =:= 0,L1 is L-1, kolDel(N,L1,X1), X is X1+1; N mod L=\= 0, L1 is L -1, kolDel(N,L1,X1), X is X1.
+kolDel(N,X):-kolDel(N,N,X).
