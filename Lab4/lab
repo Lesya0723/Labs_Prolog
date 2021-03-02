@@ -33,3 +33,9 @@ rev([H|T],CurL,X):-rev(T,H|CurL,X).
 
 p([], _) :- !.
 p([SubHead|SubTail], [Head|Tail]) :- (SubHead = Head -> p(SubTail, Tail); p([SubHead|SubTail], Tail)).
+
+
+delete_1([], _Elem, []):-!.
+delete_1([Elem|Tail], Elem, ResultTail):- delete_1(Tail, Elem, ResultTail), !.
+delete_1([Head|Tail], Elem, [Head|ResultTail]):-delete_1(Tail, Elem, ResultTail).
+
