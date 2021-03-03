@@ -88,3 +88,18 @@ not(in_list(Outfit,[natasha,green,green])),
 not(in_list(Outfit,[natasha,blue,blue])),
 write(Outfit).
 
+
+pr_ein4:- Jobs = [_,_,_],
+in_list(Jobs,[ivanov,_,_,_]),
+in_list(Jobs,[semenov,_,_,_]),
+in_list(Jobs,[_,tokar,_,_]),
+in_list(Jobs,[_,svarshik,_,_]),
+in_list(Jobs,[_,_,_,old]),
+in_list(Jobs,[_,_,_,middle]),
+in_list(Jobs,[_,_,indefinitely,_]),
+in_list(Jobs,[_,slesar,no,young]),
+in_list(Jobs,[borisov,_,have,_]),
+not(in_list(Jobs,[_,tokar,_,old])),
+not(in_list(Jobs,[semenov,tokar,_,_])),
+not(in_list(Jobs,[semenov,_,_,young])),
+write(Jobs).
