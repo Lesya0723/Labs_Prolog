@@ -48,3 +48,6 @@ rd1(_,[],[]):-!.
 rd1(H,[H|T],List):-    rd1(H,T,List).
 rd1(X,[H|T],List):-    rd1(X,T,Lx1),List=[H|Lx1].
 
+count_num([Head|Tail],X,R):-count_num([Head|Tail],X,0,R).
+count_num([],_,Res,Res):-!.
+count_num([Head|Tail],X,I,Res):-(Head=X -> I1 is I+1,count_num(Tail,X,I1,Res);count_num(Tail,X,I,Res)).
