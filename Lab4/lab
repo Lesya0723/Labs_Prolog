@@ -41,3 +41,10 @@ delete_1([Head|Tail], Elem, [Head|ResultTail]):-delete_1(Tail, Elem, ResultTail)
 
 unique([]):-!.
 unique([Head|Tail]):- member(Head, Tail), !, fail; unique(Tail).
+
+removeDub([],[]).
+removeDub([H|T],List):- rd1(H,T,T1), removeDub(T1,ListT),List=[H|ListT].
+rd1(_,[],[]):-!.
+rd1(H,[H|T],List):-    rd1(H,T,List).
+rd1(X,[H|T],List):-    rd1(X,T,Lx1),List=[H|Lx1].
+
