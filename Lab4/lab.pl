@@ -16,6 +16,10 @@ listElNumb(List,Elem,Number):-listElNumb(List,Elem,0,Number).
 listElNumb([H|_],H,Number,Number):-!.
 listElNumb([_|T],Elem,I,Number):-I1 is I+1,listElNumb(T,Elem,I1,Number).
 
+ write_num5:-write("кол-во элементов :
+ "),read(N),nl,write("Введите список"),rList(N,List),nl,write("Введите элемент: "),read(Elem),nl,listElNumb(List,Elem,Number),write(Number),!.
+write_num5:-write("Нет элемента").
+
 min_listUp([MinElem], MinElem):-write("Минимальный элемент"),!.
 min_listUp([Head|L], MinElem):- min_listUp(L, TailMinElem),( TailMinElem < Head -> MinElem = TailMinElem; MinElem = Head).
 
