@@ -62,3 +62,29 @@ not(in_list(FriendHair,[belokurov,brunet])),
 not(in_list(FriendHair,[rizhov,red])),
 not(in_list(FriendHair,[chernov,brunet])),
 write(FriendHair).
+
+pr_ein3:- Outfit=[_,_,_],
+
+in_list(Outfit,[anna,_,_]),
+in_list(Outfit,[valya,_,_]),
+in_list(Outfit,[natasha,_,_]),
+in_list(Outfit,[_,white,_]),
+in_list(Outfit,[_,green,_]),
+in_list(Outfit,[_,blue,_]),
+in_list(Outfit,[_,_,white]),
+in_list(Outfit,[_,_,green]),
+in_list(Outfit,[_,_,blue]),
+(   in_list(Outfit,[anna,white,white]);
+in_list(Outfit,[anna,green,green]);
+in_list(Outfit,[anna,blue,blue])),
+not(in_list(Outfit,[valya,white,_])),
+not(in_list(Outfit,[valya,_,white])),
+not(in_list(Outfit,[valya,white,white])),
+    in_list(Outfit,[natasha,_,green]),
+not(in_list(Outfit,[valya,green,green])),
+not(in_list(Outfit,[valya,blue,blue])),
+not(in_list(Outfit,[natasha,white,white])),
+not(in_list(Outfit,[natasha,green,green])),
+not(in_list(Outfit,[natasha,blue,blue])),
+write(Outfit).
+
