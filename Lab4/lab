@@ -39,3 +39,5 @@ delete_1([], _Elem, []):-!.
 delete_1([Elem|Tail], Elem, ResultTail):- delete_1(Tail, Elem, ResultTail), !.
 delete_1([Head|Tail], Elem, [Head|ResultTail]):-delete_1(Tail, Elem, ResultTail).
 
+unique([]):-!.
+unique([Head|Tail]):- member(Head, Tail), !, fail; unique(Tail).
