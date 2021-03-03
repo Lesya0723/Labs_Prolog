@@ -12,6 +12,10 @@ sList([H|L], CurSum, Sum):- CurSum1 is CurSum+H,sList(L,CurSum1,Sum).
 sum_list_up([],0):-!.
 sum_list_up([H|L],Sum):-sum_list_up(L,Sum1),Sum is Sum1+H.
 
+listElNumb(List,Elem,Number):-listElNumb(List,Elem,0,Number).
+listElNumb([H|_],H,Number,Number):-!.
+listElNumb([_|T],Elem,I,Number):-I1 is I+1,listElNumb(T,Elem,I1,Number).
+
 min_listUp([MinElem], MinElem):-write("Минимальный элемент"),!.
 min_listUp([Head|L], MinElem):- min_listUp(L, TailMinElem),( TailMinElem < Head -> MinElem = TailMinElem; MinElem = Head).
 
