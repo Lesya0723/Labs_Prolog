@@ -35,6 +35,9 @@ p([], _) :- !.
 p([SubHead|SubTail], [Head|Tail]) :- (SubHead = Head -> p(SubTail, Tail); p([SubHead|SubTail], Tail)).
 
 
+delete_ind(0,[_|Z],Z):- !.
+delete_ind(X,[Head|T],[Head|R]) :- X1 is X-1,delete_ind(X1,T,R).
+
 delete_1([], _Elem, []):-!.
 delete_1([Elem|Tail], Elem, ResultTail):- delete_1(Tail, Elem, ResultTail), !.
 delete_1([Head|Tail], Elem, [Head|ResultTail]):-delete_1(Tail, Elem, ResultTail).
