@@ -94,9 +94,8 @@ b_s(X):-b_s(X,Y),write(Y),nl,fail.
 grand_pa(X,Y):-parent(X,Z),parent(Z,Y),man(X).
 grand_pas(X):-grand_pa(Y,X),write(Y),nl,fail.
 
-daughter(X,Y):-parent(Y,X),woman(X),!.
-grand_so(X,Y):-son(X,Z),(son(Z,Y);daughter(Z,Y)),man(X),!.
-grand_sons(X):-parent(X,Z),parent(Z,Y),man(Y),write(Y),nl,fail.
+grand_so(X,Y):-man(X),grand_pa(Y,X).
+grand_sons(X):-grand_so(Y,X),write(Y),nl,fail. 
 
 grand_pa_and_son(X,Y):-(grand_pa(X,Y),!,man(X),man(Y));grand_so(X,Y),man(X),man(Y).
 
