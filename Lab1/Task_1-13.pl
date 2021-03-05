@@ -90,7 +90,6 @@ sisters(X):-parent(Z,X),parent(Z,Y),woman(Y),woman(Z),not(Y=X),write(Y),nl,fail.
 b_s(X,Y):-mother(Z,X),mother(Z,Y),not(X=Y).
 b_s(X):-b_s(X,Y),write(Y),nl,fail.
 
-
 grand_pa(X,Y):-parent(X,Z),parent(Z,Y),man(X).
 grand_pas(X):-grand_pa(Y,X),write(Y),nl,fail.
 
@@ -99,10 +98,7 @@ grand_sons(X):-grand_so(Y,X),write(Y),nl,fail.
 
 grand_pa_and_son(X,Y):-grand_so(X,Y);grand_pa(X,Y),man(Y).
 
-
-grand_da(X,Y):-daughter(X,Z),(son(Z,Y);daughter(Z,Y)),woman(X),!.
-grand_pa_and_da(X,Y):-(grand_pa(X,Y),woman(Y),!);grand_da(X,Y),man(Y).
-
+grand_pa_and_da(X,Y):-woman(X),man(Y),parent(Y,Z),parent(Z,X);woman(Y),man(X),parent(X,Z),parent(Z,Y).
 
 uncle(X,Y):-parent(Z,Y),brother(X,Z).
 uncle(X):-uncle(Y,X),write(Y),nl,fail.
