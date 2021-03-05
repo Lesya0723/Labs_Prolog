@@ -61,11 +61,15 @@ kolDel(N,L,X):-N mod L =:= 0,L1 is L-1, kolDel(N,L1,X1), X is X1+1; N mod L=\= 0
 kolDel(N,X):-kolDel(N,N,X).
 
 
-fun(X, X, X).
-fun(X, Y, D):- X < Y, Z is Y - X,fun(X, Z, D).
-fun(X, Y, D):- Y < X,Z is X - Y, fun(Z, Y, D).
-func(X, Y):- fun(X, Y, 1), !.
+kol_mutually_prime_up(_,0,0):-!.
+kol_mutually_prime_up(N,CurX,X):-nod(N,CurX,Nod),Nod =:= 1,CurX1 is CurX-1,kol_mutually_prime_up(N,CurX1,X1),X is X1+1;
+nod(N,CurX,Nod),Nod =\= 1, CurX1 is CurX-1,kol_mutually_prime_up(N,CurX1,X1), X is X1.
+kol_mutually_prime_up(N,X):-kol_mutually_prime_up(N,N,X).
 
-phi(X, N):- phi_(1, 0, X, N).
-phi_(X, I, X, I).
-phi_(CX, I, X, N):- func(CX, X), J is I + 1, Y is CX + 1, phi_(Y, J, X, N);Y is CX + 1,phi_(Y, I, X, N).
+mutually_prime(X,Y,Z):-nod(X,Y,Nod),Nod =:= 1, Z is 1,!.
+mutually_prime(_,_,Z):- Z is 0,!.
+
+kol_mutually_prime_down(N,N,X,X):-!.
+kol_mutually_prime_down(N,CurX,Kol,X):- mutually_prime(N,CurX,Nod),CurX1 is CurX+1, Kol1 is Kol+Nod,kol_mutually_prime_down(N,CurX1,Kol1,X).
+
+kol_mutually_prime_down(N,X):-kol_mutually_prime_down(N,1,0,X).
