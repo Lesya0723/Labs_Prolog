@@ -97,7 +97,8 @@ grand_pas(X):-grand_pa(Y,X),write(Y),nl,fail.
 grand_so(X,Y):-man(X),grand_pa(Y,X).
 grand_sons(X):-grand_so(Y,X),write(Y),nl,fail. 
 
-grand_pa_and_son(X,Y):-(grand_pa(X,Y),!,man(X),man(Y));grand_so(X,Y),man(X),man(Y).
+grand_pa_and_son(X,Y):-grand_so(X,Y);grand_pa(X,Y),man(Y).
+
 
 grand_da(X,Y):-daughter(X,Z),(son(Z,Y);daughter(Z,Y)),woman(X),!.
 grand_pa_and_da(X,Y):-(grand_pa(X,Y),woman(Y),!);grand_da(X,Y),man(Y).
