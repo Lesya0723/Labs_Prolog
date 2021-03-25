@@ -14,3 +14,8 @@ kolvo_words:-read_str(A,_),append1([32],A,A1),kol_slov(A1,0,Kol),write(Kol).
 kol_slov([_|[]],Kol,Kol):-!.
 kol_slov([H1|[H2|T]],K,Kol):-(H1=32,H2\=32 -> K1 is K+1,kol_slov([H2|T],K1,Kol);kol_slov([H2|T],K,Kol)).
 
+ex4:-read_str(A,Length),(Length>5 -> ex4(A),reverse(A,RES),ex4(RES);
+	   ex4(A,Length)).
+ex4([H1|[H2|[H3|_]]]):-put(H1),put(H2),put(H3),!.
+ex4([_|_],0):-!.
+ex4([H|T],Length):-put(H),L1 is Length-1,ex4([H|T],L1).
