@@ -66,3 +66,9 @@ ex15([]):-!.
 ex15([H|_]):-H\=97,H\=98,H\=99,!,fail.
 ex15([_|T]):-ex15(T).
 
+ex16:-read_str(Str,_),ex16(Str,[],Res),write_str(Res).
+ex16([],Res,Res):-!.
+ex16([H1|[H2|[H3|[H4|T]]]],Buffer,Res):-(H1=119,H2=111,H3=114,H4=100-> append(Buffer,[108,101,116,116,101,114],BufferN),ex16(T,BufferN,Res)),!.
+ex16([H|T],Buffer,Res):-append1(Buffer,[H],BufferN),ex16(T,BufferN,Res),!.
+
+
