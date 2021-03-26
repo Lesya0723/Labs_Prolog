@@ -23,3 +23,8 @@ ex4([H|T],Length):-put(H),L1 is Length-1,ex4([H|T],L1).
 index:-read_str(L,_),index(L,0).
 index([],_):-!.
 index([H|T],Res):-Res1 is Res+1,(0 is Res1 mod 3 -> put(H),index(T,Res1);index(T,Res1)).
+
+ex7_1:- read_str(S,_), kolvo_p_m(S, Res), write("Количество плюсов и минусов = "),write(Res).
+kolvo_p_m([], Res, Res) :- !.
+kolvo_p_m([H|T], Count, Res) :-((H = 43 | H = 45) ->Count1 is Count + 1;Count1 is Count),kolvo_p_m(T, Count1, Res).
+kolvo_p_m(List, Res) :- kolvo_p_m(List, 0, Res).
