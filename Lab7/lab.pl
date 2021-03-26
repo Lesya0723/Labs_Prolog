@@ -61,3 +61,8 @@ ex14([],Kol,Kol):-!.
 ex14([H|T],Kol,Res):-H>47,H<58,K1 is Kol+1,ex14(T,K1,Res),!.
 ex14([_|T],Kol,Res):-ex14(T,Kol,Res),!.
 
+ex15:-read_str(Str,_),ex15(Str).
+ex15([]):-!.
+ex15([H|_]):-H\=97,H\=98,H\=99,!,fail.
+ex15([_|T]):-ex15(T).
+
