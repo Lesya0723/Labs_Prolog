@@ -47,3 +47,7 @@ ex9:-read_str(Str1,Number1),read_str(Str2,Number2),(Number1>Number2 -> Number3 i
 write_1(0,_):-!.
 write_1(Number,Str):-write_str(Str),Number1 is Number-1,write_1(Number1,Str).
 
+ex10:-read_str(Str,_),ex10(Str,Str1),write_str(Str1).
+ex10([H1,H2,H3|T],List1):-H1=97,H2=98,H3=99,List1 = [119,119,119|T],!.
+ex10(List,List1):-append1(List,[122,122,122],List1),!.
+
