@@ -55,3 +55,9 @@ ex11:-read_str(Str,Length),(Length>10 -> ex11(Str,Str2);ex11(Str,Length,12,Str2)
 ex11(Str,Str2):- Str2 = [_,_,_,_,_,_],append1(Str2,_,Str),!.
 ex11(Str2,12,_,Str2):-!.
 ex11(Str,L,Length,Str2):-L1 is L+1,append1(Str,[111],Str1),ex11(Str1,L1,Length,Str2).
+
+ex14:-read_str(Str,_),ex14(Str,0,Kol),write(Kol).
+ex14([],Kol,Kol):-!.
+ex14([H|T],Kol,Res):-H>47,H<58,K1 is Kol+1,ex14(T,K1,Res),!.
+ex14([_|T],Kol,Res):-ex14(T,Kol,Res),!.
+
