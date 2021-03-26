@@ -28,3 +28,9 @@ ex7_1:- read_str(S,_), kolvo_p_m(S, Res), write("Количество плюсо
 kolvo_p_m([], Res, Res) :- !.
 kolvo_p_m([H|T], Count, Res) :-((H = 43 | H = 45) ->Count1 is Count + 1;Count1 is Count),kolvo_p_m(T, Count1, Res).
 kolvo_p_m(List, Res) :- kolvo_p_m(List, 0, Res).
+
+ex7_2:- read_str(S,_), count_posle0(S, Res), write("Количество = "),write(Res).
+count_posle0([_], Res, Res) :- !.
+count_posle0([_|[H2|T]], Count, Res) :-(H2 = 48 ->Count1 is Count + 1;Count1 is Count),count_posle0([H2|T], Count1, Res).
+count_posle0(List, Res) :- count_posle0(List, 0, Res).
+
