@@ -43,5 +43,7 @@ listElNumb([_|T],Elem,I,Number):-I1 is I+1,listElNumb(T,Elem,I1,Number).
 in_list([El|_],El).
 in_list([_|T],El):-in_list(T,El).
 
-
+ex9:-read_str(Str1,Number1),read_str(Str2,Number2),(Number1>Number2 -> Number3 is Number1-Number2,write_1(Number3,Str1);Number3 is Number2-Number1,write_1(Number3,Str2)).
+write_1(0,_):-!.
+write_1(Number,Str):-write_str(Str),Number1 is Number-1,write_1(Number1,Str).
 
