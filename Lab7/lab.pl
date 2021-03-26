@@ -34,3 +34,14 @@ count_posle0([_], Res, Res) :- !.
 count_posle0([_|[H2|T]], Count, Res) :-(H2 = 48 ->Count1 is Count + 1;Count1 is Count),count_posle0([H2|T], Count1, Res).
 count_posle0(List, Res) :- count_posle0(List, 0, Res).
 
+ex8:-read_str(Str,_),(not((in_list(Str, 119),in_list(Str, 120))) -> write("ошибка");(listElNumb(Str, 119, W),listElNumb(Str, 120, X),(W < X ->write("w  раньше x");write("x раньше w")))).
+
+listElNumb(List,Elem,Number):-listElNumb(List,Elem,0,Number).
+listElNumb([H|_],H,Number,Number):-!.
+listElNumb([_|T],Elem,I,Number):-I1 is I+1,listElNumb(T,Elem,I1,Number).
+
+in_list([El|_],El).
+in_list([_|T],El):-in_list(T,El).
+
+
+
