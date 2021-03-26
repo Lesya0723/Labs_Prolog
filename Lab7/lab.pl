@@ -71,4 +71,9 @@ ex16([],Res,Res):-!.
 ex16([H1|[H2|[H3|[H4|T]]]],Buffer,Res):-(H1=119,H2=111,H3=114,H4=100-> append(Buffer,[108,101,116,116,101,114],BufferN),ex16(T,BufferN,Res)),!.
 ex16([H|T],Buffer,Res):-append1(Buffer,[H],BufferN),ex16(T,BufferN,Res),!.
 
+ex17:-read_str(Str,_),ex17(Str,[],Res),write_str(Res).
+ex17([],Res,Res):-!.
+ex17([120,97,98,99|T],Buffer,Res):-append1(Buffer,[97,98,99],BufferNew),ex17(T,BufferNew,Res),!.
+ex17([H|T],Buffer,Res):-append1(Buffer,[H],BufferNew),ex17(T,BufferNew,Res).
+
 
