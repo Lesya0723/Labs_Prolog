@@ -51,3 +51,7 @@ ex10:-read_str(Str,_),ex10(Str,Str1),write_str(Str1).
 ex10([H1,H2,H3|T],List1):-H1=97,H2=98,H3=99,List1 = [119,119,119|T],!.
 ex10(List,List1):-append1(List,[122,122,122],List1),!.
 
+ex11:-read_str(Str,Length),(Length>10 -> ex11(Str,Str2);ex11(Str,Length,12,Str2)),write_str(Str2).
+ex11(Str,Str2):- Str2 = [_,_,_,_,_,_],append1(Str2,_,Str),!.
+ex11(Str2,12,_,Str2):-!.
+ex11(Str,L,Length,Str2):-L1 is L+1,append1(Str,[111],Str1),ex11(Str1,L1,Length,Str2).
