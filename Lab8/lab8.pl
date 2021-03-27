@@ -25,3 +25,9 @@ ex2_2(S),told.
 ex2_2([_]):-write("Символы упорядочены"),!.
 ex2_2([H1,H2|T]):-H1<H2,!,ex2_2([H2|T]).
 ex2_2([_,_|_]):-write("Символы не упорядочены"),!.
+
+ex2_10:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(Str,_,1),seen,ex2_10(Str,0,Res),write(Res),told.
+ex2_10([],Res,Res):-!.
+ex2_10([H|T],Kol,Res):-H=65,Kol1 is Kol+1,ex2_10(T,Kol1,Res),!.
+ex2_10([_|T],Kol,Res):-ex2_10(T,Kol,Res).
+
