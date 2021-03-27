@@ -76,4 +76,8 @@ ex17([],Res,Res):-!.
 ex17([120,97,98,99|T],Buffer,Res):-append1(Buffer,[97,98,99],BufferNew),ex17(T,BufferNew,Res),!.
 ex17([H|T],Buffer,Res):-append1(Buffer,[H],BufferNew),ex17(T,BufferNew,Res).
 
+ex18:-read_str(Str,_),ex18(Str,[],Res),write_str(Res).
+ex18([],Res,Res):-!.
+ex18([97,98,99,X|T],Buffer,Res):-(X>47,X<58->append1(Buffer,[X],BufferNew)),ex18(T,BufferNew,Res),!.
+ex18([H|T],Buffer,Res):-append1(Buffer,[H],BufferNew),ex18(T,BufferNew,Res).
 
