@@ -81,3 +81,7 @@ ex18([],Res,Res):-!.
 ex18([97,98,99,X|T],Buffer,Res):-(X>47,X<58->append1(Buffer,[X],BufferNew)),ex18(T,BufferNew,Res),!.
 ex18([H|T],Buffer,Res):-append1(Buffer,[H],BufferNew),ex18(T,BufferNew,Res).
 
+ex19:-read_str(Str,_),ex19(Str,0,Kolvo),write(Kolvo).
+ex19([],Kol,Kol):-!.
+ex19([97,98,97|T],Kol,Kolvo):-Kol1 is Kol+1,ex19(T,Kol1,Kolvo),!.
+ex19([_|T],Kol,Kolvo):-ex19(T,Kol,Kolvo).
