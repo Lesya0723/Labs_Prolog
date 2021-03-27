@@ -20,6 +20,13 @@ ex4([H1|[H2|[H3|_]]]):-put(H1),put(H2),put(H3),!.
 ex4([_|_],0):-!.
 ex4([H|T],Length):-put(H),L1 is Length-1,ex4([H|T],L1).
 
+ex5:-read_str(Str,_),simbol(Str,Elem),match(Str,Elem,0).
+simbol([H],H):-!.
+simbol([_|Tail],Elem):-simbol(Tail,Elem).
+match([_],_,_):-!.
+match([Elem|T],Elem,Res):-write(Res),nl,Res1 is Res+1,match(T,Elem,Res1),!.
+match([_|T],Elem,Res):-Res1 is Res+1,match(T,Elem,Res1).
+
 index:-read_str(L,_),index(L,0).
 index([],_):-!.
 index([H|T],Res):-Res1 is Res+1,(0 is Res1 mod 3 -> put(H),index(T,Res1);index(T,Res1)).
