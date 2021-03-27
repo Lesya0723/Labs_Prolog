@@ -36,3 +36,8 @@ dot([46|T],Res):-append([],T,Res),!.
 dot([_|T],Res):-dot(T,Res).
 slash([47|_],Res,Res):-!.
 slash([H|T],L,Res):-append([H],L,L1),slash(T,L1,Res).
+
+ex4_2:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(Str,_,_),seen,ex4_2(Str).
+ex4_2([]):-!.
+ex4_2([H|_]):-H >=97,H =<122,put(H),fail.
+ex4_2([_|T]):-ex4_2(T).
