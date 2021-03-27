@@ -31,3 +31,8 @@ ex2_10([],Res,Res):-!.
 ex2_10([H|T],Kol,Res):-H=65,Kol1 is Kol+1,ex2_10(T,Kol1,Res),!.
 ex2_10([_|T],Kol,Res):-ex2_10(T,Kol,Res).
 
+ex2_17:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(Str,_,_),seen,reverse(Str,A),dot(A,A1),slash(A1,[],Res),name(Res1,Res),write(Res1).
+dot([46|T],Res):-append([],T,Res),!.
+dot([_|T],Res):-dot(T,Res).
+slash([47|_],Res,Res):-!.
+slash([H|T],L,Res):-append([H],L,L1),slash(T,L1,Res).
