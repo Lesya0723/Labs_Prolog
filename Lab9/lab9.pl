@@ -7,11 +7,11 @@ r_str(10,A,A,N,N):-!.
 r_str(X,A,B,N,K):-K1 is K+1,append(B,[X],B1),get0(X1),r_str(X1,A,B1,N,K1).
 
 
-build_all_razm_p:-
-		read_str(A,_),read(K),b_a_rp(A,K,[]).
+build_all_razm_p:-read_str(A,_),read(K),tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(b_a_rp(A,K,[])),told.
 
-b_a_rp(_,0,Perm1):-write_str(Perm1),nl,!,fail.
+b_a_rp(_,0,Perm1):-write_str(Perm1),nl,!,false.
 b_a_rp(A,N,Perm):-in_list(A,El),N1 is N-1,b_a_rp(A,N1,[El|Perm]).
+
 
 build_all_perm:-read_str(A,_),b_a_p(A,[]).
 
