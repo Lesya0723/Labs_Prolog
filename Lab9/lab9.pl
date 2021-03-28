@@ -12,11 +12,11 @@ build_all_razm_p:-read_str(A,_),read(K),tell('C:/Users/Admin/Documents/Prolog/л
 b_a_rp(_,0,Perm1):-write_str(Perm1),nl,!,false.
 b_a_rp(A,N,Perm):-in_list(A,El),N1 is N-1,b_a_rp(A,N1,[El|Perm]).
 
-
-build_all_perm:-read_str(A,_),b_a_p(A,[]).
+build_all_perm:-read_str(A,_),tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(b_a_p(A,[])),told.
 
 in_list_exlude([El|T],El,T).
 in_list_exlude([H|T],El,[H|Tail]):-in_list_exlude(T,El,Tail).
 
 b_a_p([],Perm1):-write_str(Perm1),nl,!,fail.
 b_a_p(A,Perm):-in_list_exlude(A,El,A1),b_a_p(A1,[El|Perm]).
+
