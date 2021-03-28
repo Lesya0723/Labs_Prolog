@@ -63,6 +63,11 @@ ex11(Str,Str2):- Str2 = [_,_,_,_,_,_],append1(Str2,_,Str),!.
 ex11(Str2,12,_,Str2):-!.
 ex11(Str,L,Length,Str2):-L1 is L+1,append1(Str,[111],Str1),ex11(Str1,L1,Length,Str2).
 
+ex13:-read_str(Str,_),ex13(Str,0,[],Str1),reverse(Str1,Res),write_str(Res).
+ex13([],_,Str,Str):-!.
+ex13([H|T],K,Str1,NStr):-K1 is K+1,0 is K1 mod 2,(H\=97,H\=98-> append([97],Str1,NSt1),ex13(T,K1,NSt1,NStr),!; append([99],Str1,NSt1),ex13(T,K1,NSt1,NStr)),!.
+ex13([H|T],K,Str1,NStr):-K1 is K+1,append([H],Str1,NSt1), ex13(T,K1,NSt1,NStr).
+
 ex14:-read_str(Str,_),ex14(Str,0,Kol),write(Kol).
 ex14([],Kol,Kol):-!.
 ex14([H|T],Kol,Res):-H>47,H<58,K1 is Kol+1,ex14(T,K1,Res),!.
