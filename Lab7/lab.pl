@@ -97,3 +97,12 @@ ex19:-read_str(Str,_),ex19(Str,0,Kolvo),write(Kolvo).
 ex19([],Kol,Kol):-!.
 ex19([97,98,97|T],Kol,Kolvo):-Kol1 is Kol+1,ex19(T,Kol1,Kolvo),!.
 ex19([_|T],Kol,Kolvo):-ex19(T,Kol,Kolvo).
+
+ex20:-read_str(Str,_),ex20(Str,0,[],Str1),ex20(Str1,StStart),reverse(StStart,StEnd),ex20(StEnd,Str2),reverse(Str2,Res),write_str(Res).
+ex20([],_,Res,Res):-!.
+ex20([32|T],0,L,NL):-append1(L,[32],N),ex20(T,1,N,NL),!.
+ex20([32|T],Kol,L,NL):-ex20(T,Kol,L,NL),!.
+ex20([H|T],_,L,NL):-append(L,[H],N),ex20(T,0,N,NL),!.
+ex20([32|T],NSt):-ex20(T,NSt),!.
+ex20(Nst,Nst):-!.
+
