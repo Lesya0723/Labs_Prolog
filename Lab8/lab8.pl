@@ -41,3 +41,9 @@ ex4_2:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(Str,_,_),see
 ex4_2([]):-!.
 ex4_2([H|_]):-H >=97,H =<122,put(H),fail.
 ex4_2([_|T]):-ex4_2(T).
+
+ex4_10:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(Str,_,0),seen,ex4_10(Str,[],Res),write_str(Res).
+ex4_10([],Str,Str):-!.
+ex4_10([32|T],L,Str):-ex4_10(T,L,Str),!.
+ex4_10([H|T],L,Str):-in_list(L,H),ex4_10(T,L,Str),!.
+ex4_10([H|T],L,Str):-append(L,[H],L1),ex4_10(T,L1,Str).
