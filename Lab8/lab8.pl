@@ -46,6 +46,27 @@ dot([_|T],Res):-dot(T,Res).
 slash([47|_],Res,Res):-!.
 slash([H|T],L,Res):-append([H],L,L1),slash(T,L1,Res).
 
+ex_3:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(A,_,1),seen,
+tell('C:/Users/Admin/Documents/Prolog/лр8/out.txt'),append(A,[32],A1),date_time(A1),told.
+
+date_time([]):-!.
+date_time([32|Tail]):-date_time(Tail),!.
+date_time([Head|Tail]):-(day([Head|Tail],[],Day,After_Day)->(month(After_Day,[],Month,After_Month)->(year(After_Month,[],Year,After_Year)->
+name(D,Day),write(D),write(" "),name(M,Month),write(M),write(" "),name(Y,Year),write(Y),nl,date_time(After_Year);date_time(After_Month));
+date_time(After_Day));date_time(Tail)).
+day([32|Tail],Day,Day,Tail):-!.
+day([Head|Tail],I,Day,After_Day):-Head >=48,Head =<57,append(I,[Head],I1),day(Tail,I1,Day,After_Day),!.
+day([_|_],_,_,_):-!,false.
+
+month([32|Tail],Month,Month,Tail):-!.
+month([Head|Tail],I,Month,After_Month):-Head >=97,Head =<122,append(I,[Head],I1),month(Tail,I1,Month,After_Month),!.
+month([_|_],_,_,_):-!,false.
+
+year([32|Tail],Year,Year,Tail):-!.
+year([Head|Tail],I,Year,After_Year):-Head >=48,Head =<57,append(I,[Head],I1),year(Tail,I1,Year,After_Year),!.
+year([_|_],_,_,_):-!,false.
+
+
 ex4_2:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(Str,_,_),seen,ex4_2(Str).
 ex4_2([]):-!.
 ex4_2([H|_]):-H >=97,H =<122,put(H),fail.
@@ -56,3 +77,4 @@ ex4_10([],Str,Str):-!.
 ex4_10([32|T],L,Str):-ex4_10(T,L,Str),!.
 ex4_10([H|T],L,Str):-in_list(L,H),ex4_10(T,L,Str),!.
 ex4_10([H|T],L,Str):-append(L,[H],L1),ex4_10(T,L1,Str).
+
