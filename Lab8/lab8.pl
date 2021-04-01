@@ -46,6 +46,15 @@ kol_repeat([H|T],X,K,Kol):-(H=X -> K1 is K+1,kol_repeat(T,X,K1,Kol);kol_repeat(T
 often_word([],Word,Word,Kol,Kol):-!.
 often_word([H|T],W,Word,K,Kol):-kol_repeat([H|T],H,K1),(K1>K -> Kol1 = K1,W1=H,often_word(T,W1,Word,K1,Kol1);often_word(T,W,Word,K,Kol)).
 
+ex1_5:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(A,_,1),seen,tell('C:/Users/Admin/Documents/Prolog/лр8/out.txt'),list_all(A,[],ListWordAllFile), pr_(ListWordAllFile,ListWordAllFile),told.
+
+pr_(_,[]):-!.
+pr_(ListWordAllFile,[H|T]):- list_w(H,ListWordInStr),pr(ListWordAllFile,ListWordInStr),write_str(H),nl,pr_(ListWordAllFile,T),!.
+pr_(ListWordAllFile,[_|T]):-pr_(ListWordAllFile,T).
+pr(_,[]):-true,!.
+pr(AllListWord,[H|T]):-kol_repeat(AllListWord,H,KolPovt),KolPovt<2,pr(AllListWord,T),!.
+pr(_,[_|_]):-!,fail.
+
 ex2_2:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(S,_,1),seen,
 ex2_2(S),told.
 ex2_2([_]):-write("Символы упорядочены"),!.
