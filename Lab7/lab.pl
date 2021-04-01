@@ -124,3 +124,8 @@ ex20([H|T],_,L,NL):-append(L,[H],N),ex20(T,0,N,NL),!.
 ex20([32|T],NSt):-ex20(T,NSt),!.
 ex20(Nst,Nst):-!.
 
+ex21:-read_str([H|T],_),read_str(Str,_),(in_list(Str,H) -> ex21(T,Str,[],[],Res);ex21([H|T],Str,[],[],Res)),write_str(Res).
+ex21([],_,[],Res,Res):-!.
+ex21([],_,LastW,L,ListW):-append1(L,[LastW],ListW),!.
+ex21([H|T],List2,Buffer,L,ListW):-not(in_list(List2,H)),append(Buffer,[H],Buffer2),ex21(T,List2,Buffer2,L,ListW),!.
+ex21([_|T],List2,Buffer,L,ListW):-append1(L,[Buffer],NewL),ex21(T,List2,[],NewL,ListW).
