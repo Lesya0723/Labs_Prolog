@@ -78,3 +78,18 @@ select_pos6(Word,Head,Sim):-(Head is 1->Word=[Sim,_,_,_,_,_],!);(Head is 2->Word
 
 in_free_pos6([H1,H2,H3,H4,H5,H6],Sim):-(var(H1)->H1 is Sim),!;(var(H2)->H2 is Sim),!; (var(H3)->H3 is Sim),!; (var(H4)->H4 is Sim),!;(var(H5)->H5 is Sim),!; (var(H6)->H6 is Sim).
 
+
+ex6:-tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(exr6),told.
+exr6:-make(7,Pos),sochet([H1,H2],2,Pos),in_list([97,98,99,100,101,102],Simb1), put_7(Word,[H1,H2],[Simb1]),
+in_list_exlude([97,98,99,100,101,102],Simb1,NList),in_list_exlude(Pos,H1,NPos),in_list_exlude(NPos,H2,NNPos),
+sochet(Pos_,3,NNPos),in_list(NList,Simb2),put_n(Word,Pos_,[Simb2]),in_list_exlude(NList,Simb2,LastSimb),in_list_exlude(LastSimb,S1,LastSimb1),in_free_pos7(Word,S1),in_list_exlude(LastSimb1,S2,_),
+in_free_pos7(Word,S2),write_str(Word),nl,fail.
+
+put_7(Word,[H1,H2],[Sim]):-select_pos7(Word,H1,Sim),select_pos7(Word,H2,Sim).
+select_pos7(Word,Head,Sim):-(Head is 1->Word=[Sim,_,_,_,_,_,_],!);(Head is 2->Word=[_,Sim,_,_,_,_,_],!);(Head is 3->Word=[_,_,Sim,_,_,_,_],!);(Head is 4->Word=[_,_,_,Sim,_,_,_],!);  (Head is 5->Word=[_,_,_,_,Sim,_,_],!);(Head is 6->Word=[_,_,_,_,_,Sim,_],!);(Head is 7->Word=[_,_,_,_,_,_,Sim]).
+
+put_n(Word,[H1,H2, H3],[Res]):-select_pos7(Word,H1,Res),select_pos7(Word,H2,Res), select_pos7(Word,H3,Res).
+
+in_free_pos7([H1,H2,H3,H4,H5,H6,H7],Sim):-(var(H1)->H1 is Sim),!;(var(H2)->H2 is Sim),!;(var(H3)->H3 is Sim),!;(var(H4)->H4 is Sim),!;(var(H5)->H5 is Sim),!;(var(H6)->H6 is Sim),!;
+(var(H7)->H7 is Sim).
+
