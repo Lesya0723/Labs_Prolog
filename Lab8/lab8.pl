@@ -29,6 +29,23 @@ write_s([],_):-!.
 write_s([H|T],KolA):-ex2_10(H,0,K),K>KolA,write_str(H),nl,write_s(T,KolA),!.
 write_s([_|T],KolA):-write_s(T,KolA),!.
 
+ex1_4:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(A,_,1),seen,tell('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),list_all(A,[],LW),often_word(LW,_,Word,0,_),write_str(Word),told.
+
+list_w(A,LW):-append1([32],A,A1),reverse(A1,AR),list_w(AR,[],LW,[]).
+list_w([],LW,LW,_):-!.
+list_w([H|T],LW,LWN,W):-((H=32; H=10) -> append([W],LW,LW1),list_w(T,LW1,LWN,[]);
+append1([H],W,W1),list_w(T,LW,LWN,W1)).
+
+list_all([],ListAllWord,ListAllWord):-!.
+list_all(Stroka,List,ListAllWord):-list_w(Stroka,LW),append1(List,LW,ListAllWord).
+
+kol_repeat([H|T],X,K):-kol_repeat([H|T],X,0,K).
+kol_repeat([],_,Kol,Kol):-!.
+kol_repeat([H|T],X,K,Kol):-(H=X -> K1 is K+1,kol_repeat(T,X,K1,Kol);kol_repeat(T,X,K,Kol)).
+
+often_word([],Word,Word,Kol,Kol):-!.
+often_word([H|T],W,Word,K,Kol):-kol_repeat([H|T],H,K1),(K1>K -> Kol1 = K1,W1=H,often_word(T,W1,Word,K1,Kol1);often_word(T,W,Word,K,Kol)).
+
 ex2_2:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(S,_,1),seen,
 ex2_2(S),told.
 ex2_2([_]):-write("Символы упорядочены"),!.
