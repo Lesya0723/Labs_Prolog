@@ -31,6 +31,12 @@ sub_set(Sub_set,[_|Set]):-sub_set(Sub_set,Set).
 pr_subset(A):-sub_set(B,A),write_str(B),nl,fail.
 subset:-read_str(A,_),tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(pr_subset(A)),told.
 
+sochet([],0,_):-!.
+sochet([H|Sub_set],K,[H|Set]):-K1 is K-1,sochet(Sub_set,K1,Set).
+sochet(Sub_set,K,[_|Set]):-sochet(Sub_set,K,Set).
+pr_sochet(A,K):-sochet(B,K,A),write_str(B),nl,fail.
+wsochet:-read_str(A,_),read(K),tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(pr_sochet(A,K)),told.
+
 make(0,[]):-!.
 make(K,[K|Tail]):-K1 is K-1,make(K1,Tail).
 
