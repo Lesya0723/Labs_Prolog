@@ -78,3 +78,23 @@ ex4_10([32|T],L,Str):-ex4_10(T,L,Str),!.
 ex4_10([H|T],L,Str):-in_list(L,H),ex4_10(T,L,Str),!.
 ex4_10([H|T],L,Str):-append(L,[H],L1),ex4_10(T,L1,Str).
 
+ex5:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_list_str(A), seen,
+tell('C:/Users/Admin/Documents/Prolog/лр8/out.txt'),list_lenght(A,[],List_Lenght),
+bubble_sort(List_Lenght,_,A,Sorted_A),write_sort(Sorted_A),told.
+
+write_sort([]):-!.
+write_sort([Head|Tail]):-name(Head1,Head),write(Head1),nl,write_sort(Tail).
+
+list_lenght([],Res,Res):-!.
+list_lenght([Head|Tail],I,Res):-lenght(Head,Lenght_Head),append(I,[Lenght_Head],I1),list_lenght(Tail,I1,Res).
+
+sorted([], [],[],[]):-!.
+sorted([Head], [Head],[HeadStr],[HeadStr]):-!.
+sorted([First, Second|Tail], ListWithMaxEnd,[FirstStr, SecondStr|TailStr],ListWithMaxEndStr):-First > Second, !,
+sorted(Tail, ListWithMaxEnd,TailStr,ListWithMaxEndStr).
+sorted([First, Second|Tail], ListWithMaxEnd,[FirstStr, SecondStr|TailStr], ListWithMaxEndStr):-sorted(Tail, ListWithMaxEnd,TailStr, ListWithMaxEndStr).
+
+bubble_sort(SortedList, SortedList,SortedList_Str,SortedList_Str):-
+sorted(SortedList, DoubleSortedList,SortedList_Str,DoubleSortedList_Str),
+SortedList = DoubleSortedList,SortedList_Str = DoubleSortedList_Str,!.
+bubble_sort(List, SortedList,List_Str,SortedList_Str):-sorted(List, SortedPart,List_Str,SortedPart_List_Str),bubble_sort(SortedPart, SortedList,SortedPart_List_Str,SortedList_Str).
