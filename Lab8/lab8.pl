@@ -20,6 +20,15 @@ count_space([]):-!.
 count_space([H|_]):-H is 32,!,fail.
 count_space([_|T]):-count_space(T).
 
+ex1_3:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_list_str(List),seen,kol_in_list(List,0,KA),
+	  kol_A(List,KA,SrA),write_s(List,SrA).
+kol_A([H|T],A,SrA):-length([H|T],L),SrA is A div L.
+kol_in_list([],K,K):-!.
+kol_in_list([H|T],K,Kol):-ex2_10(H,0,A),K1 is K+A,kol_in_list(T,K1,Kol).
+write_s([],_):-!.
+write_s([H|T],KolA):-ex2_10(H,0,K),K>KolA,write_str(H),nl,write_s(T,KolA),!.
+write_s([_|T],KolA):-write_s(T,KolA),!.
+
 ex2_2:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_str(S,_,1),seen,
 ex2_2(S),told.
 ex2_2([_]):-write("Символы упорядочены"),!.
