@@ -133,7 +133,7 @@ short_way(V,E,I,S,Way,_,Len):-
 short_way(_,_,_,_,Way,Way,_).
 
 
-ex10_5:-see('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),read_graph(_,E1),seen,write(E1),nl,not(par(E1,[])).
+ex10_5:-see('C:/Users/Admin/Documents/Prolog/лр10/in.txt'),read_graph(_,E1),seen,write(E1),nl,not(par(E1,[])).
 read_graph(H,T):-   read_list_str([H|T]).
 par([H|E1],S):-par([H],E1,T),check_par(T,S),write(T),nl,par(E1,[H|S]).
 par(T,[],T).
