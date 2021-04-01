@@ -50,7 +50,7 @@ razm_p:-tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(aa_razm_),told.
 razm_P:-make(5,Pos),sochet(Pos_a,2,Pos),put(Word,Pos_a,[97]),in_list([98,99,100,101,102],S1),in_free_pos(Word,S1),in_list([98,99,100,101,102],S2),
 in_free_pos(Word,S2),in_list([98,99,100,101,102],S3),in_free_pos(Word,S3),write_str(Word),nl,fail.
 
-put(Word,[Head1,Head2],[Sim]):-select_pos(Word,Head1,Sim),select_pos(Word,Head2,Sim).
+put_(Word,[Head1,Head2],[Sim]):-select_pos(Word,Head1,Sim),select_pos(Word,Head2,Sim).
 
 select_pos(Word,H,Res):-(H is 1->Word=[Res,_,_,_,_],!);(H is 2->Word=[_,Res,_,_,_],!);(H is 3->Word=[_,_,Res,_,_],!);(H is 4->Word=[_,_,_,Res,_],!);(H is 5->Word=[_,_,_,_,Res]).
 
@@ -60,4 +60,9 @@ in_free_pos([H1,H2,H3,H4,H5],Res):-(var(H1)->H1 is Res),!;(var(H2)->H2 is Res),!
 aa_razm:-tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(aa_razm_),told.
 aa_razm_:-make(5,Pos),sochet(Pos_a,2,Pos),put_(Res,Pos_a,[97]),in_list_exlude([98,99,100,101,102],St1,N),in_free_pos(Res,St1),in_list_exlude(N,St2,N1),in_free_pos(Res,St2),in_list_exlude(N1,St3,_),in_free_pos(Res,St3),
 write_str(Res),nl,fail.
+
+ex4:-tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(exr4),told.
+exr4:-make(5,Pos),sochet(Pos_s,2,Pos),in_list([97,98,99,100,101,102],Simb),put_(Res,Pos_s,[Simb]),in_list_exlude([97,98,99,100,101,102],Simb,List),in_list_exlude(List,St1,N),in_free_pos(Res,St1),in_list_exlude(N,St2,N1),
+in_free_pos(Res,St2),in_list_exlude(N1,St3,_),in_free_pos(Res,St3),write_str(Res),nl,fail.
+
 
