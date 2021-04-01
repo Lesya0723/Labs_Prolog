@@ -129,3 +129,11 @@ ex21([],_,[],Res,Res):-!.
 ex21([],_,LastW,L,ListW):-append1(L,[LastW],ListW),!.
 ex21([H|T],List2,Buffer,L,ListW):-not(in_list(List2,H)),append(Buffer,[H],Buffer2),ex21(T,List2,Buffer2,L,ListW),!.
 ex21([_|T],List2,Buffer,L,ListW):-append1(L,[Buffer],NewL),ex21(T,List2,[],NewL,ListW).
+
+
+ex22:-read_str(St,Length),print_sr(St),print_sr(St,Length).
+print_sr([H|T]):-write("First = "),put(H),nl,reverse([H|T],[HR|_]),write("End = "),put(HR),nl.
+print_sr(List,Length):-not(0 is Length mod 2),L is Length div 2+1,index(List,El,L,0),write("Middle = "),put(El),!.
+
+index([H|T],El,Num):-index([H|T],El,Num,0).
+index([H|T],El,Num,Chet):-Chet1 is Chet+1,(H = El,Num = Chet1 -> !;index(T,El,Num,Chet1)).
