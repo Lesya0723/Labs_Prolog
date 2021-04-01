@@ -93,3 +93,19 @@ put_n(Word,[H1,H2, H3],[Res]):-select_pos7(Word,H1,Res),select_pos7(Word,H2,Res)
 in_free_pos7([H1,H2,H3,H4,H5,H6,H7],Sim):-(var(H1)->H1 is Sim),!;(var(H2)->H2 is Sim),!;(var(H3)->H3 is Sim),!;(var(H4)->H4 is Sim),!;(var(H5)->H5 is Sim),!;(var(H6)->H6 is Sim),!;
 (var(H7)->H7 is Sim).
 
+
+ex7:-tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(exr7),told.
+exr7:-make(9,Pos),sochet([H1,H2],2,Pos),in_list([97,98,99,100,101,102],Simb1), put_pos9(Word,[H1,H2],[Simb1]),in_list_exlude([97,98,99,100,101,102],Simb1,NList),in_list_exlude(Pos,H1,NPos),in_list_exlude(NPos,H2,NNPos),
+sochet([H3, H4],2,NNPos),in_list(NList,Simb2),put_pos9(Word,[H3,H4],[Simb2]),in_list_exlude(NList,Simb2,NList_),in_list_exlude(NNPos,H3,EPos),in_list_exlude(EPos,H4,Pos_),
+sochet(Pos1_,3,Pos_),in_list_exlude(NList_,Simb3, LastSimbol),put_pos93(Word,Pos1_,[Simb3]),in_list_exlude(LastSimbol,S1,LastSimb1),in_free_pos9(Word,S1),		 in_list_exlude(LastSimb1,S2,_),
+in_free_pos9(Word,S2),write_str(Word),nl,fail.
+put_pos9(Word,[H1,H2],[Res]):-select_pos9(Word,H1,Res),select_pos9(Word,H2,Res).
+select_pos9(Word,H,Sim):-(H is 1->Word=[Sim,_,_,_,_,_,_,_,_],!);(H is 2->Word=[_,Sim,_,_,_,_,_,_,_],!);(H is 3->Word=[_,_,Sim,_,_,_,_,_,_],!);(H is 4->Word=[_,_,_,Sim,_,_,_,_,_],!);
+(H is 5->Word=[_,_,_,_,Sim,_,_,_,_],!);(H is 6->Word=[_,_,_,_,_,Sim,_,_,_],!);(H is 7->Word=[_,_,_,_,_,_,Sim,_,_],!);(H is 8->Word=[_,_,_,_,_,_,_,Sim,_],!);
+(H is 9->Word=[_,_,_,_,_,_,_,_,Sim]).
+
+put_pos93(Word,[H1,H2,H3],[Res]):-select_pos9(Word,H1,Res),select_pos9(Word,H2,Res), select_pos9(Word,H3,Res).
+
+in_free_pos9([H1,H2,H3,H4,H5,H6,H7,H8,H9],Sim):-(var(H1)->H1 is Sim),!;(var(H2)->H2 is Sim),!;(var(H3)->H3 is Sim),!;(var(H4)->H4 is Sim),!;(var(H5)->H5 is Sim),!;(var(H6)->H6 is Sim),!;
+(var(H7)->H7 is Sim),!;(var(H8)->H8 is Sim),!;(var(H9)->H9 is Sim).
+
