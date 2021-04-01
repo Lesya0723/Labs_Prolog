@@ -113,3 +113,8 @@ ex8:-tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),write_str([[97],[97],[
 exr8:- make(4,Pos),in_list(Pos,I),in_list([98,99,100,101,102],Simb1),put_pos4(Word,[I],[Simb1]), in_list_exlude([98,99,100,101,102],Simb1,_),		 in_free_pos4(Word,[97]),		 in_free_pos4(Word,[97]),		 in_free_pos4(Word,[97]),		 write_str(Word),nl,fail.
 put_pos4(Word,[H1],[Res]):-select_pos4(Word,H1,Res).select_pos4(Word,H,Sim):-(H is 1->Word=[Sim,_,_,_],!);(H is 2->Word=[_,Sim,_,_],!);(H is 3->Word=[_,_,Sim,_],!);(H is 4->Word=[_,_,_,Sim],!).
 in_free_pos4([H1,H2,H3,H4],Sim):-(var(H1)->H1 is Sim),!;(var(H2)->H2 is Sim),!;(var(H3)->H3 is Sim),!;(var(H4)->H4 is S
+
+ex9:-tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(exr9),nl,told.
+exr9:-make(7,Pos),sochet(Pos_a,3,Pos),put_73(Word,Pos_a,[97]),in_list([97,98,99,100,101,102],S1),in_free_pos7(Word,S1),in_list([97,98,99,100,101,102],S2),in_free_pos7(Word,S2),
+in_list([97,98,99,100,101,102],S3),in_free_pos7(Word,S3),in_list([97,98,99,100,101,102],S3),in_free_pos7(Word,S3),
+write_str(Word),nl,fail.
