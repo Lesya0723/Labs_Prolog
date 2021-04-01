@@ -98,3 +98,14 @@ bubble_sort(SortedList, SortedList,SortedList_Str,SortedList_Str):-
 sorted(SortedList, DoubleSortedList,SortedList_Str,DoubleSortedList_Str),
 SortedList = DoubleSortedList,SortedList_Str = DoubleSortedList_Str,!.
 bubble_sort(List, SortedList,List_Str,SortedList_Str):-sorted(List, SortedPart,List_Str,SortedPart_List_Str),bubble_sort(SortedPart, SortedList,SortedPart_List_Str,SortedList_Str).
+
+pr6:-see('C:/Users/Admin/Documents/Prolog/лр8/in.txt'),read_list_str(List,_),seen,kol_slov_str(List, L),sort1(List, L,[]).
+
+kol_slov(A,L):-kol_slov(A,[],L),!.
+kol_slov([],L, L):-!.
+kol_slov([H|T], L_, L):-list_wo(H,LW,0,Kolvo),append1(L_,[Kolvo],L1),kol_slov(T,L1,L).
+
+list_wo(A,LW,_,K):-append1([32],A,A1),reverse(A1,AR),list_wo(AR,[],LW,[],K,0).
+list_wo([],LW,LW,_,K,K):-!.
+list_wo([H|T],LW,LWN,W,Kolvo,K):-((H=32; H=10) -> append([W],LW,LW1), K1 is K+1,list_wo(T,LW1,LWN,[],Kolvo, K1);
+append1([H],W,W1),list_wo(T,LW,LWN,W1,Kolvo,K)).
