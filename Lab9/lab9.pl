@@ -30,3 +30,18 @@ sub_set([H|Sub_set],[H|Set]):-sub_set(Sub_set,Set).
 sub_set(Sub_set,[_|Set]):-sub_set(Sub_set,Set).
 pr_subset(A):-sub_set(B,A),write_str(B),nl,fail.
 subset:-read_str(A,_),tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(pr_subset(A)),told.
+
+make(0,[]):-!.
+make(K,[K|Tail]):-K1 is K-1,make(K1,Tail).
+
+razm_p:-tell('C:/Users/Admin/Documents/Prolog/лр9/in.txt'),not(aa_razm_),told.
+razm_P:-make(5,Pos),sochet(Pos_a,2,Pos),put(Word,Pos_a,[97]),in_list([98,99,100,101,102],S1),in_free_pos(Word,S1),in_list([98,99,100,101,102],S2),
+in_free_pos(Word,S2),in_list([98,99,100,101,102],S3),in_free_pos(Word,S3),write_str(Word),nl,fail.
+
+put(Word,[Head1,Head2],[Sim]):-select_pos(Word,Head1,Sim),select_pos(Word,Head2,Sim).
+
+select_pos(Word,H,Res):-(H is 1->Word=[Res,_,_,_,_],!);(H is 2->Word=[_,Res,_,_,_],!);(H is 3->Word=[_,_,Res,_,_],!);(H is 4->Word=[_,_,_,Res,_],!);(H is 5->Word=[_,_,_,_,Res]).
+
+in_free_pos([H1,H2,H3,H4,H5],Res):-(var(H1)->H1 is Res),!;(var(H2)->H2 is Res),!;
+(var(H3)->H3 is Res),!;(var(H4)->H4 is Res),!;(var(H5)->H5 is Res).
+
